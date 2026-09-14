@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>구독 트래커</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">SUBSCRIPTION CONTROL</p>
+        <h1>구독 트래커</h1>
+        <p class="subtitle">매달 빠져나가는 비용을 한눈에 관리하세요.</p>
+      </div>
+      <div class="header-mark" aria-hidden="true">₩</div>
+    </header>
+
+    <section class="summary-grid" aria-label="구독 요약">
+      <article class="summary-card summary-primary">
+        <span>월 예상 지출</span>
+        <strong id="monthly-total">0원</strong>
+        <small>연간 결제를 월 기준으로 환산</small>
+      </article>
+      <article class="summary-card">
+        <span>연간 예상 지출</span>
+        <strong id="yearly-total">0원</strong>
+        <small>등록된 모든 구독 기준</small>
+      </article>
+      <article class="summary-card">
+        <span>이번 주 결제 예정</span>
+        <strong id="week-count">0건</strong>
+        <small id="week-total">예정 금액 0원</small>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <div class="main-column">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MY SUBSCRIPTIONS</p>
+            <h2>구독 목록</h2>
+          </div>
+          <span class="count-pill" id="subscription-count">0개</span>
+        </div>
+        <div id="subscription-list" class="subscription-list" aria-live="polite"></div>
+      </div>
+
+      <aside class="side-column">
+        <section class="panel form-panel">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">ADD NEW</p>
+              <h2 id="form-title">새 구독 추가</h2>
+            </div>
+          </div>
+          <form id="subscription-form">
+            <input type="hidden" id="subscription-id">
+            <label>서비스 이름<input id="name" name="name" required placeholder="예: 넷플릭스"></label>
+            <div class="form-row">
+              <label>금액<input id="amount" name="amount" type="number" min="0" required placeholder="13500"></label>
+              <label>주기<select id="cycle" name="cycle"><option value="monthly">매월</option><option value="yearly">매년</option></select></label>
+            </div>
+            <div class="form-row">
+              <label>다음 결제일<input id="next-payment-date" name="nextPaymentDate" type="date" required></label>
+              <label>카테고리<input id="category" name="category" required placeholder="영상"></label>
+            </div>
+            <label>결제 카드<input id="payment-method" name="paymentMethod" placeholder="예: 신한카드"></label>
+            <div class="form-actions">
+              <button class="button button-primary" type="submit" id="submit-button">구독 추가</button>
+              <button class="button button-muted hidden" type="button" id="cancel-edit">취소</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel category-panel">
+          <div class="section-heading compact">
+            <div><p class="eyebrow">SPENDING MIX</p><h2>카테고리별 비중</h2></div>
+          </div>
+          <div id="category-breakdown" class="category-breakdown"></div>
+        </section>
+      </aside>
+    </section>
+  </main>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
